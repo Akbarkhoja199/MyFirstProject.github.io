@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recent PetrolStations Map</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+</head>
+<body>
+
+<div id="map" style="width: 100%; height: 730px;"></div>
+
+<script>
+    // Initialize the map
+    const map = L.map('map').setView([41.3460051, 69.2080258], 11);
+
+    // Add a base layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Fetch the GeoJSON file
+    fetch('petrols.json')
+        .then(response => response.json())
+        .then(data => {
+            const geoJsonLayer = L.geoJSON(data, {
+            onEachFeature: function (feature, layer) {
+                const name = feature.properties.name;
+                const description = feature.properties.description;
+                layer.bindPopup(`<b>${name}</b><br>${description}`);
+            }
+        }).addTo(map);
+
+        //map.fitBounds(geoJsonLayer.getBounds());
+    })
+    .catch(error => console.error("Error loading GeoJSON:", error));
+
+</script>
+
+</body>
+</html>

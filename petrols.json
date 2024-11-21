@@ -1,0 +1,38 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [69.2080258,41.3460051]
+            },
+            "properties": {
+                "name": "Petrol",
+                "description": "AI 95"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [69.2190171,41.331606]
+            },
+            "properties": {
+                "name": "Petrol",
+                "description": "AI 92"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [69.2394094,41.3230377]
+            },
+            "properties": {
+                "name": "Petrol",
+                "description": "AI 95"
+            }
+        }
+    ]
+}
